@@ -1,0 +1,45 @@
+<div class="wrapper">
+  <header class="header">Header</header>
+
+
+  <aside class="aside aside-1">Conteudo 1
+    <article class="main">
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+        <mat-form-field appearance="legacy">
+          <mat-label>Nome :</mat-label>
+          <input matInput placeholder="Nome" type="text" formControlName="nome" required maxlength="50">
+          <mat-icon matSuffix> Nome </mat-icon>
+          <mat-hint>Nome</mat-hint>
+        </mat-form-field>
+        <br>
+        <br>
+        <button mat-raised-button color="primary" type="submit" [disabled]="!profileForm.valid">Salvar</button>
+      </form>
+
+    </article>
+  </aside>
+
+  <aside class="aside aside-2">Conteudo 2
+
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+      <!-- Id Column -->
+      <ng-container matColumnDef="Id">
+        <th mat-header-cell *matHeaderCellDef> Código </th>
+        <td mat-cell *matCellDef="let produto"> {{produto.id}} </td>
+      </ng-container>
+
+      <!-- Nome Column -->
+      <ng-container matColumnDef="Nome">
+        <th mat-header-cell *matHeaderCellDef> Nome </th>
+        <td mat-cell *matCellDef="let produto"> {{produto.nome}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+  </aside>
+
+  <footer class="footer">Footer</footer>
+</div>
